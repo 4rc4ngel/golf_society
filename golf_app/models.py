@@ -10,7 +10,7 @@ class Players(models.Model):
   name = models.ForeignKey('auth.User')
   nickname = models.CharField(max_length=30, blank=True, null=True)
   handicap = models.IntegerField(max_length=2)
-  current.score = models.IntegerField(max_length=2)
+  current_score = models.IntegerField(max_length=2)
   total_score = models.IntegerField(max_length=4)
   nearest_pin = models.IntegerField(max_length=2)
   birdies = models.IntegerField(max_length=2)
