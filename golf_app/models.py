@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 
 # Players Model
 
-class Players(models.Model):
+class Player(models.Model):
   name = models.ForeignKey('auth.User')
   nickname = models.CharField(max_length=30, blank=True, null=True)
   handicap = models.IntegerField()
@@ -22,7 +22,7 @@ class Players(models.Model):
 # Blog Post Model
 
 class Post(models.Model):
-  author = models.CharField('golf_app.Players',max_length=200)
+  author = models.CharField('golf_app.Player',max_length=200)
   title = models.CharField(max_length=200)
   text =  models.TextField()
   date_created = models.DateTimeField(default=timezone.now)

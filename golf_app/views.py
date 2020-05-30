@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from django.utils import timezone
-from golf_app.models import Players,Post,Comment
+from golf_app.models import Player,Post,Comment
 from golf_app.forms import PlayersForm,PostForm,CommentForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -15,13 +15,13 @@ from django.views.generic import(TemplateView,ListView,DeleteView,
 # Players Views
 
 class PlayersListView(ListView):
-  model = Players
+  model = Player
 
   def get_queryset(self):
-    return Players.objects.all().order_by('-total_score')
+    return Player.objects.all().order_by('-total_score')
 
 class PlayersDetailView(DetailView):
-  model = Players
+  model = Player
 
 # Player CRUD Views
 
@@ -29,16 +29,16 @@ class CreatePlayerView(LoginRequiredMixin,CreateView):
   login_url = '/login/'
   redirect_field_name = 'golf_app/player_detail.html'
   form_class = PlayersForm
-  model = Players
+  model = Player
 
 class PlayerUpdateView(LoginRequiredMixin,UpdateView):
   login_url = '/login/'
   redirect_field_name = 'golf_app/player_detail.html'
   form_class = PlayersForm
-  model = Players
+  model = Player
 
 class PlayerDeleteView(LoginRequiredMixin,DeleteView):
-  model = Players
+  model = Player
   success_url = reverse_lazy('players_list')
 
 ######################################################

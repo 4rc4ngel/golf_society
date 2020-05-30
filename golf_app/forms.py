@@ -1,12 +1,12 @@
 from django import forms
-from golf_app.models import Players, Post, Comment
+from golf_app.models import Player, Post, Comment
 
 # Players form
 
 class PlayersForm(forms.ModelForm):
 
   class Meta():
-    model = Players
+    model = Player
     fields = ('name', 'nickname', 'handicap', 'current_score',
               'total_score', 'nearest_pin', 'birdies', 'eagles')
 
