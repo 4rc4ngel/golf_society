@@ -9,12 +9,12 @@ from django.core.urlresolvers import reverse
 class Players(models.Model):
   name = models.ForeignKey('auth.User')
   nickname = models.CharField(max_length=30, blank=True, null=True)
-  handicap = models.IntegerField(max_length=2)
-  current_score = models.IntegerField(max_length=2)
-  total_score = models.IntegerField(max_length=4)
-  nearest_pin = models.IntegerField(max_length=2)
-  birdies = models.IntegerField(max_length=2)
-  eagles = models.IntegerField(max_length=2)
+  handicap = models.IntegerField()
+  current_score = models.IntegerField()
+  total_score = models.IntegerField()
+  nearest_pin = models.IntegerField()
+  birdies = models.IntegerField()
+  eagles = models.IntegerField()
 
   def __str__(self):
     return self.name
@@ -22,7 +22,7 @@ class Players(models.Model):
 # Blog Post Model
 
 class Post(models.Model):
-  author = models.CharField('golf_app.Players', related_name='author')
+  author = models.CharField('golf_app.Players',max_length=200)
   title = models.CharField(max_length=200)
   text =  models.TextField()
   date_created = models.DateTimeField(default=timezone.now)

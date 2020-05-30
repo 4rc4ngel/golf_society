@@ -18,7 +18,7 @@ class PlayersListView(ListView):
   model = Players
 
   def get_queryset(self):
-    return Players.objects.all()order.by('-total_score')
+    return Players.objects.all().order_by('-total_score')
 
 class PlayersDetailView(DetailView):
   model = Players
@@ -49,7 +49,7 @@ class PostListView(ListView):
   model = Post
 
   def get_queryset(self):
-    return Post.objects.filter(date_published__lte=timezone.now().order.by('-date_published'))
+    return Post.objects.filter(date_published__lte=timezone.now().order_by('-date_published'))
 
 class PostDetailView(DeleteView):
   mode = Post
@@ -76,7 +76,7 @@ class DraftListView(LoginRequiredMixin,ListView):
   model = Post
 
   def get_queryset(self):
-    return Post.objects.filter(date_published__isnull=True).order.by('date_created')
+    return Post.objects.filter(date_published__isnull=True).order_by('date_created')
 
 #####################################################
 
@@ -101,10 +101,17 @@ def add_comment_to_post(request,pk):
   else:
     form = CommentForm()
   return render(request, 'golf_app/comment_form.html', {'form':form})
+
+@login_required
+def comment_approve(request,pk):
+  comment = get_object_or_404(Comment,pk=pk)
+  comment.approve()
+  return redirect('post_detail',pk=comment.pk)
+
  
- @login_required
- def comment_remove(request,pk):
-   comment = get_object_or_404(Comment, pk=pk)
-   post_pk = comment.post.pk
-   comment.delete()
-   return redirect('post_detail', pk=post.pk)
+@login_required
+def comment_remove(request,pk):
+  comment = get_object_or_404(Comment, pk=pk)
+  post_pk = comment.post.pk
+  comment.delete()
+  return redirect('post_detail', pk=post.pk)
