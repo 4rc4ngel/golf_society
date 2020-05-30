@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="player-list">
+  <h1>
+    <a href="{% url 'player_list' %}">{{ player.name }} - {{ player.handicap }}</a>
+  </h1>    
+{% endblock %}

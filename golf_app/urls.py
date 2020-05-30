@@ -2,14 +2,15 @@ from django.conf.urls import url
 from golf_app import views
 
 urlpatterns = [
+  url(r'^$',views.IndexView.as_view(),name='index'),
   # player urls
-  url(r'^$',views.PlayersListView.as_view(),name='player_list'),
+  url(r'^players/$',views.PlayersListView.as_view(),name='player_list'),
   url(r'^players/(?P<pk>\d+)$',views.PlayersDetailView.as_view(),name='player_detail'),
   url(r'^players/new/$',views.CreatePlayerView.as_view(),name='new_player'),
-  url(r'^players/(?P<pk>\d+)/edit/$',views.PlayerUpdateView.as_view(),name='player_update'),
+  url(r'^players/(?P<pk>\d+)/edit/$',views.PlayerUpdateView.as_view(),name='edit_player'),
   url(r'^players/(?P<pk>\d+)/remove/$',views.PlayerDeleteView.as_view(),name='remove_player'),
   # post urls
-  url(r'^$',views.PostListView.as_view(),name='post_list'),
+  url(r'^post/$',views.PostListView.as_view(),name='post_list'),
   url(r'^post/(?P<pk>\d+)$',views.PostDetailView.as_view(),name='post_detail'),
   url(r'^post/new/$',views.CreatePostView.as_view(),name='new_post'),
   url(r'^post/(?P<pk>\d+)/edit/$',views.PostUpdateView.as_view(),name='edit_post'),

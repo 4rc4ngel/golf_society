@@ -16,13 +16,19 @@ class Player(models.Model):
   birdies = models.IntegerField()
   eagles = models.IntegerField()
 
+  def save_player(self):
+    self.save()
+
+  def get_absolute_url(self):
+    return reverse('player_list')
+
   def __str__(self):
-    return self.name
+    return self.nickname
 
 # Blog Post Model
 
 class Post(models.Model):
-  author = models.CharField('golf_app.Player',max_length=200)
+  author = models.CharField(max_length=200)
   title = models.CharField(max_length=200)
   text =  models.TextField()
   date_created = models.DateTimeField(default=timezone.now)

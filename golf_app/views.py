@@ -11,6 +11,8 @@ from django.views.generic import(TemplateView,ListView,DeleteView,
 
 # Create your views here.
 
+class IndexView(TemplateView):
+  template_name = 'index.html'
 
 # Players Views
 
@@ -39,7 +41,7 @@ class PlayerUpdateView(LoginRequiredMixin,UpdateView):
 
 class PlayerDeleteView(LoginRequiredMixin,DeleteView):
   model = Player
-  success_url = reverse_lazy('players_list')
+  success_url = reverse_lazy('player_list')
 
 ######################################################
 
@@ -49,14 +51,14 @@ class PostListView(ListView):
   model = Post
 
   def get_queryset(self):
-    return Post.objects.filter(date_published__lte=timezone.now().order_by('-date_published'))
+    return Post.objects.filter(date_published__lte=timezone.now()).order_by('-date_published')
 
-class PostDetailView(DeleteView):
+class PostDetailView(DetailView):
   mode = Post
 
 class CreatePostView(LoginRequiredMixin,CreateView):
   login_url = '/login/'
-  redirect_field_name = 'golf_app/post_detail.html'
+  redirect_field_name = 'golf_app/post_list.html'
   form_class = PostForm
   model = Post
 
