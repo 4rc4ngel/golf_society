@@ -7,7 +7,7 @@ class PlayersForm(forms.ModelForm):
 
   class Meta():
     model = Player
-    fields = ('name', 'nickname', 'handicap', 'current_score',
+    fields = ('name', 'full_name', 'nickname', 'handicap', 'current_score',
               'total_score', 'nearest_pin', 'birdies', 'eagles')
 
 class PostForm(forms.ModelForm):

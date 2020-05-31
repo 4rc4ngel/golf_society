@@ -3,7 +3,7 @@
   {% for player in player_list %}
   <div class="player-list">
     <h1>
-      <a href="{% url 'player_detail' pk=player.pk %}">{{ player.nickname }} - {{ player.handicap }}</a>
+      <a href="{% url 'player_detail' pk=player.pk %}">{{ player.full_name }} - {{ player.handicap }}</a>
     </h1>    
     {% endfor %}
   </div>

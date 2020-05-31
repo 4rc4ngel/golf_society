@@ -17,14 +17,13 @@ class IndexView(TemplateView):
 # Players Views
 
 class PlayersListView(ListView):
-  model = Player
-
-  def get_queryset(self):
-    return Player.objects.all().order_by('-total_score')
+  model = Player  
 
 class PlayersDetailView(DetailView):
   model = Player
-
+ 
+  def get_queryset(self):
+   return Player.objects.all().order_by('-total_score')
 # Player CRUD Views
 
 class CreatePlayerView(LoginRequiredMixin,CreateView):
@@ -50,11 +49,11 @@ class PlayerDeleteView(LoginRequiredMixin,DeleteView):
 class PostListView(ListView):
   model = Post
 
-  def get_queryset(self):
-    return Post.objects.filter(date_published__lte=timezone.now()).order_by('-date_published')
-
 class PostDetailView(DetailView):
   mode = Post
+
+  def get_queryset(self):
+    return Post.objects.all().order_by('-date_published')
 
 class CreatePostView(LoginRequiredMixin,CreateView):
   login_url = '/login/'
@@ -64,12 +63,12 @@ class CreatePostView(LoginRequiredMixin,CreateView):
 
 class PostUpdateView(LoginRequiredMixin,UpdateView):
   login_url = '/login/'
-  redirect_field_name = 'golf_app/post_detail.html'
+  redirect_field_name = 'golf_app/post_list.html'
   form_class = PostForm
   model = Post
 
 class PostDeleteView(LoginRequiredMixin,DeleteView):
-  mode = Post
+  model = Post
   success_url = reverse_lazy('post_list')
 
 class DraftListView(LoginRequiredMixin,ListView):
@@ -90,7 +89,6 @@ def post_publish(request,pk):
   post.publish()
   return redirect('post_detail', pk=pk)
 
-@login_required
 def add_comment_to_post(request,pk):
   post = get_object_or_404(Post,pk=pk)
   if request.method == 'POST':
@@ -105,15 +103,15 @@ def add_comment_to_post(request,pk):
   return render(request, 'golf_app/comment_form.html', {'form':form})
 
 @login_required
-def comment_approve(request,pk):
+def approve_comment(request,pk):
   comment = get_object_or_404(Comment,pk=pk)
   comment.approve()
-  return redirect('post_detail',pk=comment.pk)
+  return redirect('post_detail',pk=comment.post.pk)
 
  
 @login_required
-def comment_remove(request,pk):
+def remove_comment(request,pk):
   comment = get_object_or_404(Comment, pk=pk)
   post_pk = comment.post.pk
   comment.delete()
-  return redirect('post_detail', pk=post.pk)
+  return redirect('post_detail', pk=post_pk)

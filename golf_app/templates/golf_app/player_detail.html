@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h1>{{ player.name }}</h1>
+  <h1>{{ player.nickname }}</h1>
     
   {% if user.is_authenticated %}
     <a href="{% url 'edit_player' pk=player.pk %}"><i class="fas fa-edit"></i></a>

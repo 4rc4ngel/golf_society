@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse
 
 class Player(models.Model):
   name = models.ForeignKey('auth.User')
+  full_name = models.CharField(max_length=200)
   nickname = models.CharField(max_length=30, blank=True, null=True)
   handicap = models.IntegerField()
   current_score = models.IntegerField()
@@ -28,7 +29,7 @@ class Player(models.Model):
 # Blog Post Model
 
 class Post(models.Model):
-  author = models.CharField(max_length=200)
+  author = models.ForeignKey('auth.User')
   title = models.CharField(max_length=200)
   text =  models.TextField()
   date_created = models.DateTimeField(default=timezone.now)
@@ -39,7 +40,7 @@ class Post(models.Model):
     self.save()
 
   def approve_comments(self):
-    return self.comments.filter(approve_comments=True)
+    return self.comments.filter(approved_comment=True)
 
   def get_absolute_url(self):
     return reverse('post_detail',kwargs={'pk':self.pk})
@@ -50,10 +51,10 @@ class Post(models.Model):
 # Blog comments model
 
 class Comment(models.Model):
-  post = models.ForeignKey('golf_app.Post', related_name='comments')
+  post = models.ForeignKey('Post', related_name='comments')
   author = models.CharField(max_length=200)
   text = models.TextField()
-  date_created = models.DateTimeField(default=timezone.now())
+  date_created = models.DateTimeField(default=timezone.now)
   approved_comment = models.BooleanField(default=False)
 
   def approve(self):
