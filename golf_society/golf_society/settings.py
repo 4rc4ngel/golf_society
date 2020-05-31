@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'golf_society.wsgi.application'
 #     }
 # }
 
-DATABASES = {'default': dj_database_url.parse("postgres://odeydxqemxilyt:32274addf7dc7714c9b31843ebf157b02957e2caa7cdff5a4342e3dae37e9b48@ec2-54-247-89-181.eu-west-1.compute.amazonaws.com:5432/d91f0h7cg76evb")}
+DATABASES = {'default': dj_database_url.parse("postgres://hrzizgbnqmpdkw:4a87639e2c4259781eaa84386f0e822d4fd28da310cc72642ebb453331dafaa9@ec2-3-231-16-122.compute-1.amazonaws.com:5432/dj12v6lcisq84")}
 
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
