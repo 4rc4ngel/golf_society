@@ -28,7 +28,7 @@ SECRET_KEY = 'jsm!e=fvd3sr+8gshztz)3+q442a09y+-gvgru$eoy&hrakq1_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [https://golf-society.herokuapp.com/]
+ALLOWED_HOSTS = ['https://golf-society.herokuapp.com/']
 
 
 # Application definition
@@ -80,14 +80,14 @@ WSGI_APPLICATION = 'golf_society.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
-# DATABASES = {'default': dj_database_url.parse("postgres://odeydxqemxilyt:32274addf7dc7714c9b31843ebf157b02957e2caa7cdff5a4342e3dae37e9b48@ec2-54-247-89-181.eu-west-1.compute.amazonaws.com:5432/d91f0h7cg76evb")}
+DATABASES = {'default': dj_database_url.parse("postgres://odeydxqemxilyt:32274addf7dc7714c9b31843ebf157b02957e2caa7cdff5a4342e3dae37e9b48@ec2-54-247-89-181.eu-west-1.compute.amazonaws.com:5432/d91f0h7cg76evb")}
 
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
