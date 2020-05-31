@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'django.contrib.staticfiles',
     'golf_app'
 ]
 
