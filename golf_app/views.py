@@ -12,7 +12,7 @@ from django.views.generic import(TemplateView,ListView,DeleteView,
 # Create your views here.
 
 class IndexView(ListView):
-  template_name = 'golf_app/index.html'
+  template_name = 'index.html'
   model = Player
 
 # Players Views
