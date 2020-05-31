@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views
-from golf_app import IndexView
+from golf_app.views import IndexView
 
 urlpatterns = [
     url(r'^$',views.IndexView.as_view(),name='index'),
