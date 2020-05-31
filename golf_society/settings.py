@@ -26,7 +26,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'golf_app/templates/golf_app')
 SECRET_KEY = 'jsm!e=fvd3sr+8gshztz)3+q442a09y+-gvgru$eoy&hrakq1_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://golf-society.herokuapp.com/']
 
