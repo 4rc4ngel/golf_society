@@ -16,13 +16,15 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views
+from golf_app import Home
 
 urlpatterns = [
     
+    url(r'^$', Home.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'accounts/login/$',views.login,name='login'),
     url(r'accounts/logout/$',views.logout,name='logout',kwargs={'next_page':'/'}),
-    url(r'^$',views.IndexListView.as_view(),name='index'),
+    url(r'^index/$',views.IndexListView.as_view(),name='index'),
     # player urls
     url(r'^players/$',views.PlayersListView.as_view(),name='player_list'),
     url(r'^players/(?P<pk>\d+)$',views.PlayersDetailView.as_view(),name='player_detail'),
