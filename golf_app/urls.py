@@ -2,7 +2,7 @@ from django.conf.urls import url
 from golf_app import views
 
 urlpatterns = [
-  url(r'^$',views.IndexView.as_view(),name='index'),
+  url(r'^/$',views.IndexView.as_view(),name='index'),
   # player urls
   url(r'^players/$',views.PlayersListView.as_view(),name='player_list'),
   url(r'^players/(?P<pk>\d+)$',views.PlayersDetailView.as_view(),name='player_detail'),
