@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from golf_app import views
+import golf_society import urls
 
 urlpatterns = [
   url(r'^/$',views.IndexView.as_view(),name='index'),
