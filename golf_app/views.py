@@ -11,7 +11,7 @@ from django.views.generic import(TemplateView,ListView,DeleteView,
 
 # Create your views here.
 
-class IndexView(ListView):
+class IndexListView(ListView):
   template_name = 'index.html'
   model = Player
 
