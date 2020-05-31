@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'golf_app.urls'
+ROOT_URLCONF = 'golf_society.urls'
 
 TEMPLATES = [
     {
