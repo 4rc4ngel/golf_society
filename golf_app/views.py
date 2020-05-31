@@ -12,7 +12,7 @@ from django.views.generic import(TemplateView,ListView,DeleteView,
 # Create your views here.
 
 class IndexView(ListView):
-  template_name = 'index.html'
+  template_name = 'golf_app/index.html'
   model = Player
 
 # Players Views
@@ -32,13 +32,13 @@ class PlayersDetailView(DetailView):
 
 class CreatePlayerView(LoginRequiredMixin,CreateView):
   login_url = '/login/'
-  redirect_field_name = 'golf_app/player_detail.html'
+  redirect_field_name = 'golf_app/player_detail.html/'
   form_class = PlayersForm
   model = Player
 
 class PlayerUpdateView(LoginRequiredMixin,UpdateView):
   login_url = '/login/'
-  redirect_field_name = 'golf_app/player_detail.html'
+  redirect_field_name = 'golf_app/player_detail.html/'
   form_class = PlayersForm
   model = Player
 
