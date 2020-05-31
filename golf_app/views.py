@@ -11,14 +11,18 @@ from django.views.generic import(TemplateView,ListView,DeleteView,
 
 # Create your views here.
 
-class IndexView(TemplateView):
+class IndexView(ListView):
   template_name = 'index.html'
+  model = Player
 
 # Players Views
 
 class PlayersListView(ListView):
-  model = Player  
+  model = Player 
 
+  def get_queryset(self):
+   return Player.objects.all().order_by('total_score')
+  
 class PlayersDetailView(DetailView):
   model = Player
  

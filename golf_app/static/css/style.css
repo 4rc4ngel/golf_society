@@ -1,3 +1,61 @@
-body {
-  background-color: red;
+/* Navbar */
+
+#navbar {
+  background: #333;
+  color: #f4f4f4;
+  padding: 0.75rem 2rem;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+}
+
+#navbar ul {
+  display: flex;
+}
+
+#navbar ul li a {
+  padding: 0.75rem 1rem;
+}
+
+#navbar ul li a:hover {
+  background: #93cb52;
+  border-radius: 5px;
+}
+
+#brand {
+  margin-right: 0.5rem;
+}
+
+/* Utilities */
+
+.lge-para {
+  font-size: 2rem;
+}
+
+/* Footer */
+
+#main-footer {
+  background: #333;
+}
+
+#main-footer .footer-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+#main-footer .footer-container p {
+  padding-top: 1rem;
+  color: #f4f4f4;
+}
+
+#main-footer .footer-container i {
+  padding: 1rem 1rem;
+  color: #f4f4f4;
+}
+
+#main-footer .footer-container i:hover {
+  background: #93cb52;
+  border-radius: 50%;
 }

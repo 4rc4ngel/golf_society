@@ -1,8 +1,118 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="player-list">
+
+<header class="jumbotron text-center mt-5">
   <h1>
-    <a href="{% url 'player_list' %}">{{ player.name }} - {{ player.handicap }}</a>
-  </h1>    
+    Welcome To Golf Society
+  </h1>
+  <p>The best golf society in Essex *probably.</p>
+</header>
+<section>
+  <h2 class="text-center my-5">About Us</h2>
+  <div class="row">
+    
+      <div class="col-md-4 mr-5">
+        <img src="static/media/maylands.jpg" alt="Mayland Club House" />
+      <h4 class="text-center mt-3">Our Home, Maylands Golf Club</h4>
+      </div>
+      
+      <div class="col-md-7">
+        <p>
+          From a casual round of golf in March 2013, John Farrow and myself
+          came up with the idea of a regular Tuesday meet to accompany our
+          monthly society days. The call was then put out on our Twitter
+          accounts, to see if there was any interest among other members of
+          the TLC Golf Society, that were Essex based. A couple of weeks later
+          we had a tee booked for 8am on a Tuesday at Mardyke Valley Golf
+          Course. Six people showed up, Chris Allen, Dave Clark, John Farrow,
+          Jon Brewster, Mike Inns, and myself. So that began our regular
+          Tuesday meet!!!
+        </p>
+  
+        <p>
+          John struck a deal with the secretary of Woolston Manor Golf Club
+          and that became our home for the remainder of the year. Numbers
+          began to grow, so we formulated a system to give us a competitive
+          edge each week, culminating in a winner at the end of the season. On
+          June 18th 2013 with a merry band of 20 golfers we lined up at
+          Woolston Manor to play the first event of our Summer Competition. We
+          ran until October 15th when Lee Spackman became the first ever
+          champion of Tuesday Club.
+        </p>
+  
+        <p>
+          Our parting words were often “See you next Tuesday” and as needed a
+          name for our group that felt as good as any………….. the
+          CUNextTuesday’s were born!!
+        </p>
+        <p>
+          The format has been amended slightly each year to try to keep the
+          competition tight, this has most defiantly worked as every year has
+          produced a winner on the final day and not before. Many of the
+          original members I’m pleased to say are still with us, although as
+          quick as one leaves, we have been fortunate to fill the hole with
+          another.
+        </p>
+        <p>
+          In 2016 we decided to have a change of scenery and moved to
+          Brentwood Golf Club, this has been a great success with the course
+          posing different problems to the ones faced at Woolston Manor. That
+          season we introduced a Matchplay tournament which is organised
+          brilliantly by Dave Clark. This has also proved popular and the
+          first final was won by Martyn Stanley.
+        </p>
+        <p>
+          April 2019 we move again, Maylands Golf Club this time.
+        </p>
+        <p>
+          As organiser of this society I feel very proud of its success and
+          pleased that we have a group of guys that get on socially. Although
+          we are all competitive golfers I think that the off course banter is
+          equally as important.
+        </p>
+        <p>
+          Andy Cannell
+        </p>
+      </div>
+     
+  </div>
+</section>
+<hr>
+    <h2 class="text-center my-5">Leaderboard</h2>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Handicap</th>
+          <th scope="col">Score</th>
+          <th scope="col">Total Score</th>
+          
+        </tr>
+      </thead>
+      {% for player in player_list|dictsortreversed:'total_score' %}
+      <tr>
+        <td><a href="{% url 'player_list' %}">{{ player.full_name }}</td>
+        <td>{{ player.handicap }}</td>
+        <td>{{ player.current_score }}</td>
+        <td>{{ player.total_score }}</td>
+       
+      </tr>
+      {% endfor %}
+      </table>
+
+    
+      <footer id="main-footer">
+        <div class="footer-container">
+          <div>
+            <p>Copyright &copy; 2019 All Rights Reserved</p>
+          </div>
+          <div>
+            <i class="fab fa-twitter fa-2x"></i>
+            <i class="fab fa-facebook fa-2x"></i>
+            <i class="fab fa-instagram fa-2x"></i>
+            <i class="fab fa-youtube fa-2x"></i>
+          </div>
+        </div>
+      </footer>   
 {% endblock %}

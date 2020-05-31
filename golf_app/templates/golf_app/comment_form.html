@@ -1,9 +1,48 @@
 {% extends 'base.html' %}
-{% block content %}
-  <h1>New Comment</h1>
-  <form class="post-form" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-default">Post Comment</button>
-  </form>
+  {% block content %}
+
+  <!-- Comment Policy -->
+
+    <h2 class="my-5">Comment Policy</h2>
+      <p>
+        All content provided on this blog is for informational purposes only. 
+        The owner of this blog makes no representations as to the accuracy or completeness of any information on this site or found by following any link on this site. The owner will not be liable for any errors or omissions in this information nor for the availability of this information. The owner will not be liable for any losses, injuries, or damages from the display or use of this information. These terms and conditions of use are subject to change at any time and without notice.
+      </p>
+
+      <p>
+        We do not share personal information with third-parties nor do we store information we collect about your visit to this blog for use other than to analyze content performance through the use of cookies, which you can turn off at anytime by modifying your internet browser's settings. We are not responsible for the republishing of the content found on this blog on other websites or media without our permission. This privacy policy is subject to change without notice
+      </p>
+  <!-- Button trigger modal -->
+
+      <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#staticBackdrop">
+        Add Comment
+      </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">New Comment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="form-group" method="POST">
+                  {% csrf_token %}
+                  
+                  {{ form.as_p }}
+                  
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Post Comment</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </form>
+              </div>              
+            </div>
+          </div>
+        </div>
+
 {% endblock %}
+

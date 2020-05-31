@@ -15,7 +15,7 @@ urlpatterns = [
   url(r'^post/new/$',views.CreatePostView.as_view(),name='new_post'),
   url(r'^post/(?P<pk>\d+)/edit/$',views.PostUpdateView.as_view(),name='edit_post'),
   url(r'^post/(?P<pk>\d+)/remove/$',views.PostDeleteView.as_view(),name='remove_post'),
-  url(r'^drafts/$',views.DraftListView.as_view(),name='draft_list'),
+  url(r'^drafts/$',views.DraftListView.as_view(),name='post_draft'),
   # Comments urls
   url(r'^post/(?P<pk>\d+)/comment/$',views.add_comment_to_post,name='add_comment_to_post'),
   url(r'^comment/(?P<pk>\d+)/approve/$',views.approve_comment,name='approve_comment'),
