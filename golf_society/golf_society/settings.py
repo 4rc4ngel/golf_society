@@ -27,7 +27,7 @@ SECRET_KEY = 'jsm!e=fvd3sr+8gshztz)3+q442a09y+-gvgru$eoy&hrakq1_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['golf-society.herokuapp.com']
 
 
 # Application definition
