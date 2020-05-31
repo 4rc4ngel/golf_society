@@ -1,18 +1,21 @@
-{% extends 'base.html' %}
-{% block content %}
-  <h1 class="text-center">{{ player.full_name }}</h1>
+{% extends 'base.html' %} {% block content %}
+<h1 class="text-center">{{ player.full_name }}</h1>
 
-  <p class="lge-para">Nickname: {{ player.nickname }}</p>
-  <p class="lge-para">Handicap: {{ player.handicap }}</p>
-  <p class="lge-para">Week Score: {{ player.current_score }}</p>
-  <p class="lge-para">Total Score: {{ player.total_score }}</p>
-  <p class="lge-para">Nearest the pins: {{ player.nearest_pin }}</p>
-  <p class="lge-para">Birdies: {{ player.birdies }}</p>
-  <p class="lge-para">Eagles: {{ player.eagles }}</p>
-    
-  {% if user.is_authenticated %}
-    <a href="{% url 'edit_player' pk=player.pk %}"><i class="btn btn-warning fas fa-edit"></i></a>
-    <a href="{% url 'remove_player' pk=player.pk %}"><i class="btn btn-danger fas fa-trash-alt"></i></a>
-  {% endif %}
-    <hr>
-  {% endblock %}
+<p class="lge-para">Nickname: {{ player.nickname }}</p>
+<p class="lge-para">Handicap: {{ player.handicap }}</p>
+<p class="lge-para">Week Score: {{ player.current_score }}</p>
+<p class="lge-para">Total Score: {{ player.total_score }}</p>
+<p class="lge-para">Nearest the pins: {{ player.nearest_pin }}</p>
+<p class="lge-para">Birdies: {{ player.birdies }}</p>
+<p class="lge-para">Eagles: {{ player.eagles }}</p>
+
+{% if user.is_authenticated %}
+<a href="{% url 'edit_player' pk=player.pk %}"
+  ><i class="btn btn-warning fas fa-edit"></i
+></a>
+<a href="{% url 'remove_player' pk=player.pk %}"
+  ><i class="btn btn-danger fas fa-trash-alt"></i
+></a>
+{% endif %}
+<hr />
+{% endblock %}

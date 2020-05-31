@@ -1,16 +1,19 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
+<div class="jumbotron text-center">
+  <h1>Captains Weekly Blog</h1>
+</div>
+<div class="">
+  {% for post in post_list %}
   <div class="">
-    {% for post in post_list %}
+    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
     <div class="">
-      <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-      <div class="">
-        <p>Published on: {{ post.date_published|date:'D M Y' }}</p>
-        <p>{{ post.text|truncatechars:200 }}</p>
-      </div>
-      <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comments.count }}</a>
+      <p>Published on: {{ post.date_published|date:'D M Y' }}</p>
+      <p>{{ post.text|truncatechars:200 }}</p>
     </div>
-    {% endfor %}
+    <a href="{% url 'post_detail' pk=post.pk %}"
+      >Comments: {{ post.approve_comments.count }}</a
+    >
   </div>
+  {% endfor %}
+</div>
 {% endblock %}
