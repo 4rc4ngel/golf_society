@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 import dj_database_url
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,9 +26,9 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'golf_app/templates/golf_app')
 SECRET_KEY = 'jsm!e=fvd3sr+8gshztz)3+q442a09y+-gvgru$eoy&hrakq1_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['golf-society.herokuapp.com']
+ALLOWED_HOSTS = [https://golf-society.herokuapp.com/]
 
 
 # Application definition
@@ -38,12 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
+    'django.contrib.staticfiles',
     'django.contrib.staticfiles',
     'golf_app'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -76,14 +80,17 @@ WSGI_APPLICATION = 'golf_society.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
-DATABASES = {'default': dj_database_url.parse("postgres://odeydxqemxilyt:32274addf7dc7714c9b31843ebf157b02957e2caa7cdff5a4342e3dae37e9b48@ec2-54-247-89-181.eu-west-1.compute.amazonaws.com:5432/d91f0h7cg76evb")}
+# DATABASES = {'default': dj_database_url.parse("postgres://odeydxqemxilyt:32274addf7dc7714c9b31843ebf157b02957e2caa7cdff5a4342e3dae37e9b48@ec2-54-247-89-181.eu-west-1.compute.amazonaws.com:5432/d91f0h7cg76evb")}
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -123,5 +130,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_REDIRECT_URL = '/'
+django_heroku.settings(locals())

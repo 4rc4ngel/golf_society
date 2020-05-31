@@ -1,1 +1,1 @@
-web: gunicorn golf_app.wsgi:application
+web: gunicorn golf_society.wsgi —-log-file -
